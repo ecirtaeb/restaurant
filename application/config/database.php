@@ -6,4 +6,5 @@
 
 $config['dsn']      = '';
 $config['password'] = '';
-$config['user']     = '';
+//$config['password'] = 'troiswa';
+$config['user']     = 'root';
