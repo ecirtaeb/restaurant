@@ -1,6 +1,6 @@
 <?php
 
-class HomeController
+class BookingController
 {
     public function httpGetMethod(Http $http, array $queryFields)
     {
@@ -11,11 +11,6 @@ class HomeController
     	 * L'argument $queryFields contient l'équivalent de $_GET en PHP natif.
     	 */
 
-        $productModel = new ProductModel();
-
-        $productList = $productModel->getAllProducts();
-
-        return ['products' => $productList];
     }
 
     public function httpPostMethod(Http $http, array $formFields)
@@ -26,5 +21,12 @@ class HomeController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $formFields contient l'équivalent de $_POST en PHP natif.
     	 */
+        var_dump($formFields);
+        $booking = new Gbooking();
+        $resa = $booking->addBooking($formFields);
+
+ //       $http->redirectTo('login');
+
+    
     }
 }

@@ -1,0 +1,28 @@
+<!-- Message de notification -->
+
+<!-- Code HTML à écrire -->
+<nav class="user-interface"> 
+	<button class="button button-primary"><a href="<?= $requestUrl ?>">creer un compte</a></button>
+	<button class="button button-primary"><a href="#">connexion</a></button
+</nav>
+
+
+<!--Formulaire de connexion -->
+<h3><i></i>Se connecter avec un compte utilisateur</h3>
+<form method="post" action="<?= $requestUrl ?>/connexion">
+	<fieldset>
+		<legend>Informations d'authentification</legend>
+		<ul>
+			<li>
+				<label for="mail">e-mail :</label>
+				<input type="text" id="mail" name="email" values="email">
+			</li>
+			<li>
+				<label for="password">Mot de passe:</label>
+				<input type="text" id="password" name="password">
+			</li>
+		</ul>
+	</fieldset>
+	<button class="button button-primary" name="button" value="connexion">Connexion</button>
+	<button class="button button-cancel" name="button" value="abandon">Abandonner</button>
+</form>

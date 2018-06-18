@@ -1,20 +1,23 @@
 <?php
-class GestionUser {
+class Guser {
 		
-	private db;
+	private $db;
 	
-	public function__construct($db) {
+	public function__construct() {
 		
-		$this->setDb($db)
+		$this->db = new Database();
 	}
 	
-	public function add(User $user) {
+	public function add(array $user) {
 	
  	$user['firstname'] = strip_tags($user['firstname']);
 	$user['lastname'] = strip_tags($user['lastname']);
-	$article['city'] = strip_tags($user['city']);
+	$user['city'] = strip_tags($user['city']);
+	$user['address'] = strip_tags($user['address']);
+	$user['email'] = strip_tags($user['email']);
+	$user['password'] = crypt($user['password'], 'abc');
 	
-	$sql = " INSERT 
+	$sql = "INSERT 
 					INTO user 
 							(id, firstname, lastname, birthday,
 							address, city, zipcode, phone, 	
@@ -24,8 +27,49 @@ class GestionUser {
 							:address, :city, :zipcode,  phone, 
 							:email, :password, :is_active, 
 							NOW(), null)";
-	database->query($sql,$user); /// reste à trouver d'où vient database ???	
- public function query($sql, array $criteria = array())
+							
+	$db->executeSql($sql, $user);
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	public function query($sql, array $criteria = array())
     {
         $query = $this->pdo->prepare($sql);
 
@@ -34,7 +78,7 @@ class GestionUser {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 	
-		public function executeSql($sql, array $values = array())
+	public function executeSql($sql, array $values = array())
 	{
 		$query = $this->pdo->prepare($sql);
 
@@ -43,7 +87,7 @@ class GestionUser {
 		return $this->pdo->lastInsertId();
 	}
 
-    public function query($sql, array $criteria = array())
+ 	public function query($sql, array $criteria = array())
     {
         $query = $this->pdo->prepare($sql);
 
@@ -52,7 +96,7 @@ class GestionUser {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function queryOne($sql, array $criteria = array())
+	public function queryOne($sql, array $criteria = array())
     {
         $query = $this->pdo->prepare($sql);
 
@@ -67,7 +111,7 @@ class GestionUser {
 	
   }
 
-  public function delete($id)  {
+	public function delete($id)  {
 
 	$id = (int) $id;
 	$sql = 'DELETE from USER WHERE id = :id';
@@ -75,7 +119,7 @@ class GestionUser {
 	$stmt->execute();
   }
 
-  public function getById($id)  {
+	public function getById($id)  {
  
 	$id = (int) $id;
 	$sql = 'SELECT	id, firstname, lastname, birthday,
@@ -90,37 +134,37 @@ class GestionUser {
     $donnees = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return new User($donnees);
-  }
+  	}
 
-  public function getList()  {
+  	public function getList()  {
   
-    // Retourne la liste de tous les Users.
-	$id = [(int) $id];
-	$users = [];
-	$sql = 'SELECT	id, firstname, lastname, birthday,
-							address, city, 	zipcode, phone,
-							email, password, is_active, 
-							created_at, updated_at 
-				FROM user
-				WHERE id = :id';
-				
-	$liste = database->query($sql, $id);
-	
-	foreach ( $liste as $donnees ) {
-	
-      $users[] = new User($donnees);
-    }
+	    // Retourne la liste de tous les Users.
+		$id = [(int) $id];
+		$users = [];
+		$sql = 'SELECT	id, firstname, lastname, birthday,
+								address, city, 	zipcode, phone,
+								email, password, is_active, 
+								created_at, updated_at 
+					FROM user
+					WHERE id = :id';
+					
+		$liste = database->query($sql, $id);
+		
+		foreach ( $liste as $donnees ) {
+		
+	      $users[] = new User($donnees);
+	    }
 
-  }
+  	}
 
-  public function update(User $user)  {
+  	public function update(User $user)  {
     // Prépare une requête de type UPDATE.
     // Assignation des valeurs à la requête.
     // Exécution de la requête.
   }
 
-  public function setDb(PDO $db)  {
-    $this->_db = $db;
+  	public function setDb(PDO $db)  {
+    $this->db = new Database();
   }
   
 }

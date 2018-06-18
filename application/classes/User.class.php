@@ -1,19 +1,19 @@
 <?php
 class User {
 		
-	private id;
-	private firstname;
-	private lastname;
-	private birthday;
-	private address;
-	private city;
-	private zipcode;
-	private phone;
-	private email;
-	private password;
-	private is_active;
-	private created_at;
-	private updated_at; 
+	private $id;
+	private $firstname;
+	private $lastname;
+	private $birthday;
+	private $address;
+	private $city;
+	private $zipcode;
+	private $phone;
+	private $email;
+	private $password;
+	private $is_active;
+	private $created_at;
+	private $updated_at; 
 
 	public function alim(array $donnees)
 	{
@@ -46,7 +46,7 @@ class User {
     		$this->id = (int) $id;
  	 }		
         
-	public function setFirstname$firstname)
+	public function setFirstname($firstname)
 	  {
 	    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
 	    // Dont la longueur est inférieure à 50 caractères.
@@ -55,7 +55,7 @@ class User {
 	    }
 	  }
 	  
-	public function setLastname$lastname)
+	public function setLastname($lastname)
 	  {
 	    if (is_string($lastname) && strlen($lastname) <= 50) {
 	      $this->lastname = $lastname;
@@ -75,12 +75,19 @@ class User {
 	      $this->address = $address;
 	    }
 	  }
+
+	public function setCity($city)
+	  {
+	    if (is_string($city) && strlen($city) <= 50) {
+	      $this->city = $city;
+	    }
+	  }
 	  
 	public function setZipcode($zipcode) {
     		$this->zipcode = (int) $zipcode;
  	 }		
 	 
-	public function setpricetHT($phone) {
+	public function setPhone($phone) {
     		$this->phone = $phone;
  	 }
 
@@ -96,7 +103,7 @@ class User {
 	  }
 
 	public function setIsActiv($isActiv) {
-    		$this->isActiv = (int) $isActiv;
+    		$this->isActiv = 1;
  	 }	
 	 	 
 	public function setCreated_At() {
