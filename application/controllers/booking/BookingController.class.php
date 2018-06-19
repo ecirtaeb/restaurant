@@ -10,6 +10,9 @@ class BookingController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $queryFields contient l'équivalent de $_GET en PHP natif.
     	 */
+        $infoUser = Session::getSession();
+        return ['infoUser' => $infoUser];
+
 
     }
 
@@ -21,12 +24,19 @@ class BookingController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $formFields contient l'équivalent de $_POST en PHP natif.
     	 */
-        var_dump($formFields);
-        $booking = new Gbooking();
-        $resa = $booking->addBooking($formFields);
+        //var_dump($formFields); exit;
+        $infoUser = Session::getSession();
 
- //       $http->redirectTo('login');
+        if (isset ($infoUser['id']) ) {
 
+            $booking = new GbookingModel();
+            $formFields['id'] = $infoUser['id'];
+            $booking->addBooking($formFields);
+
+        }
+        
+        $http->redirectTo('');
+        exit;
     
     }
 }

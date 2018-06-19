@@ -34,9 +34,22 @@
 <!-- Interface utilisateur -->
 <nav class="user-interface">
     <ul class="link-list">
-        <li></li>
+		<?php 
+			$session = new Session();
+			$infoUser = $session->getSession();
+		?>
+        <?php if ( isset($infoUser['id'] ) ) : ?>
+            <li><a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a></li>
+            <li><a class="button button-primary" href="<?= $requestUrl ?>/commande">Commander</a></li>
+            <li><p class="welcome"> Bonjour <strong><?= $infoUser['firstname'] ?> <?= $infoUser['lastname'] ?></strong></p></li>
+            <li><a class="button button-primary" href="<?= $requestUrl ?>/deconnexion">Déconnexion</a></li>
+        <?php else : ?> 
+            <li><a class="button button-primary" href="<?= $requestUrl ?>/compte">creer un compte</a></li>
+            <li><a class="button button-primary" href="<?= $requestUrl ?>/connexion">connexion</a></li>
+        <?php endif ?>
     </ul>
 </nav>
+
 
 <main>
     <!-- Affichage du template lié à la vue -->
@@ -57,4 +70,9 @@
 <script src="<?= $wwwUrl ?>/js/main.js"></script>
 
 </body>
+<div>
+<?php
+    Tools::pre($_SESSION);
+?>
+</div>
 </html>

@@ -1,27 +1,54 @@
 <!-- Message de notification -->
 
-<!-- Code HTML à écrire -->
-<nav class="user-interface"> 
-	<a href="#">creer un compte</a>
-	<a href="#">connexion</a>
-</nav>
 
 <!-- Liste des aliments -->
-<h3><i></i>Se connecter avec un commte utilisateur</h3>
-<form method="post" action="">
+<h3><i></i>Passer une commande</h3>
+<form method="post" action="<?= $requestUrl ?>/commande">
 	<fieldset>
-		<legend>Informations d'authentification</legend>
+		<legend>Ajouter un article</legend>
 		<ul>
 			<li>
-				<label for="mail">e-mail :</label>
-				<input type="text" id="mail" values="email">
+				<label for="Article">Article:</label>
+				<select name="product_id">
+				<?php foreach ($products as $product) : ?>
+					<option values="<?= $product['id'] ?>"><?= $product['name'] ?></option>
+				<?php endforeach; ?>	
+			</li>
+			<li class="meal-details">
+
 			</li>
 			<li>
-				<label for="password">Mot de passe:</label>
-				<input type="text" id="password">
+				<label for="quantity">Quantité:</label>
+				<input type="text" name="quantity" id="quantity">
+			</li>
+			<li>
+				<button class="button button-primary" name="button" value="ajout">Ajouter</button>
 			</li>
 		</ul>
 	</fieldset>
-	<a href="<?= $requestUrl ?>">Créer le compte</a>
-	<a href=""></a>
+</form>
+<form>
+	<fieldset>
+		<legend>Récapitulatif de la commande</legend>
+		<?php if ( count($orderLines) > 0 ) : ?>
+			<thead>
+				<th>Quantité</th>
+				<th>Produit</th>
+				<th>Prix unitaire</th>
+				<th colspan="2">Prix total</th>
+			</thead>
+			<tbody>
+				<?php foreach ($orderLines as $line) : ?>
+						<td><?= $line['quantity'] ?>"></td>
+						<td><?= $line['product_name'] ?>"></td>
+						<td><?= $line['total_price'] ?>"></td>
+						<td><a heref="#">Poubelle</a></td>
+				<?php endforeach; ?>	
+			</tbody>
+		<?php else: ?>
+			<p class="basket-empty">Votre panier est vide pour le quart d'heure</p>
+		<?php endif ?>
+	</fieldset>
+	<button class="button button-primary" name="button" value="validation">Validation de la commande</button>
+	<button class="button button-cancel" name="button" value="abandon">Abandonner</button>
 </form>

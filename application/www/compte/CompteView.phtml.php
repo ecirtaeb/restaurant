@@ -2,13 +2,13 @@
 
 <!-- Code HTML à écrire -->
 <nav class="user-interface"> 
-	<button class="button button-primary"><a href="<?= $requestUrl ?>/compte">creer un compte</a></button>
-	<button class="button button-primary"><a href="<?= $requestUrl ?>/connexion">connexion</a></button
+	<a class="button button-primary" href="<?= $requestUrl ?>/compte">creer un compte</a>
+	<a class="button button-primary" href="<?= $requestUrl ?>/connexion">connexion</a>
 </nav>
 
 <!-- Liste des aliments -->
 <h3><i></i>Création d'un compte</h3>
-<form method="post" class="generic form" action="<?= $requestUrl ?>/compte">
+<form method="post" class="generic-form" action="<?= $requestUrl ?>/compte">
 	<fieldset>
 		<legend>Identité et coordonnées</legend>
 		<ul>
@@ -22,22 +22,22 @@
 			</li>
 			<li>
 				<label for="birthdate">Date de naissance :</label>
-				<select>
+				<select name="birthD" >
 					<option></option>
-					<?php for ($i = 1 ; $i<32 ; $i++) : ?>
-						<option id="birthdate" name="birthdd" values("<?= $i ?>")><?= $i ?></option>
+					<?php for ($i = 1 ; $i < 32 ; $i++) : ?>
+						<option id="birthdate" values("<?= $i ?>")><?= $i ?></option>
 					<?php endfor ?>
 				</select>
-				<select>
+				<select name="birthM">
 					<option></option>
-					<?php for ($i = 1 ; $i<13 ; $i++) : ?>
-						<option name="birthmm" values("<?= $i ?>")><?= $i ?></option>
+					<?php for ($i = 1 ; $i < 8 ; $i++) : ?>
+						<option  values("<?= $i ?>")><?= $i ?></option>
 					<?php endfor ?>
 				</select>
-				<select>
+				<select name="birthA" >
 					<option></option>
-					<?php for ($i = 1920 ; $i<2000 ; $i++) : ?>
-						<option name="birthmm" values("<?= $i ?>")><?= $i ?></option>
+					<?php for ($i = 2000 ; $i>1920 ; $i--) : ?>
+						<option values("<?= $i ?>")><?= $i ?></option>
 					<?php endfor ?>
 				</select>
 			</li>

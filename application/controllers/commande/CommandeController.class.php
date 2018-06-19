@@ -10,6 +10,20 @@ class CommandeController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $queryFields contient l'équivalent de $_GET en PHP natif.
     	 */
+	// liste des produits
+		$productModel = new GesProductModel();
+        $productList = $productModel->getAllProducts();
+		
+		$session = new Session();
+		$infoUser = $session->getSession();
+
+    		$order = new GesOrderModel();
+		$orderLines = $order->getOrderByUserId($infoUser['id']);
+		
+	// liste des produits déjà en commande pour ce compte
+	
+	// on renvoie les 2 listes
+        return ['products' => $productList, 'orderLines' => $orderLines];
 
     }
 

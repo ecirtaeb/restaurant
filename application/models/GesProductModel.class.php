@@ -1,5 +1,5 @@
 <?php
-class ProductModel {
+class GesProductModel {
 
 	public function getAllProducts() {
 

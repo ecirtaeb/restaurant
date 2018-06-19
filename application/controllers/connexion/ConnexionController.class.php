@@ -19,20 +19,21 @@ class ConnexionController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $formFields contient l'équivalent de $_POST en PHP natif.
     	 */
-        session_start();
-		$user = new Guser();
+       
+		$user = new GesUserModel();
         $infoUser = $user->getUser($formFields);
 //      
  		if ($infoUser == null) {
-			  $http->redirectTo('connexion');
+			 $http->redirectTo('connexion');
 
 		} else {
-				var_dump($infoUser);
-				$_SESSION['iduser'] = $infoUser['id'];
-				$_SESSION['firstname'] = $infoUser['firstname'];
-				return ['user' => $_SESSION['firstname']];
-			  $http->redirectTo('HomeController');
-				exit;
+
+ //           Tools::newSession();
+			$_SESSION['iduser'] = $infoUser['id'];
+            var_dump ($_SESSION);
+			//return ['user' => $_SESSION['firstname']];
+		    $http->redirectTo('');
+			exit;
 		} 
 
 	}

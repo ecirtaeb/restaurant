@@ -1,5 +1,5 @@
 <?php
-class Guser {
+class GesUserModel {
 		
 	private $db;
 	
@@ -36,14 +36,26 @@ class Guser {
 
 	public function getUser(array $user)  {
  
-	if ( isset($user['button'] ) ) { array_pop($user); }
-	$user['password'] = crypt($user['password'], 'abc');
-	
-	$sql = "SELECT id, firstname, lastname
-				FROM user
-				WHERE email = :email and password = :password";
+		if ( isset($user['button'] ) ) { array_pop($user); }
+		$user['password'] = crypt($user['password'], 'abc');
+		
+		$sql = "SELECT id, firstname, lastname
+					FROM user
+					WHERE email = :email and password = :password";
 
-    return $infoUser = $this->db->queryOne($sql, $user);
+	    return $infoUser = $this->db->queryOne($sql, $user);
+	
+  	}
+
+  	public function getUserById($id)  {
+ 
+		$user[] = $id;
+
+		$sql = "SELECT id, firstname, lastname
+					FROM user
+					WHERE id = " . $id;
+
+		return $infoUser = $this->db->queryOne($sql, $user);
 	
   	}
 
