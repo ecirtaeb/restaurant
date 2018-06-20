@@ -35,17 +35,16 @@
 <nav class="user-interface">
     <ul class="link-list">
 		<?php 
-			$session = new Session();
-			$infoUser = $session->getSession();
+			$infoUser = Session::getSession();
 		?>
-        <?php if ( isset($infoUser['id'] ) ) : ?>
+        <?php if ( Session::isConnected() ) : ?>
             <li><a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a></li>
             <li><a class="button button-primary" href="<?= $requestUrl ?>/commande">Commander</a></li>
             <li><p class="welcome"> Bonjour <strong><?= $infoUser['firstname'] ?> <?= $infoUser['lastname'] ?></strong></p></li>
-            <li><a class="button button-primary" href="<?= $requestUrl ?>/deconnexion">Déconnexion</a></li>
+            <li class="layout-right"><a class="button button-primary" href="<?= $requestUrl ?>/deconnexion">Déconnexion</a></li>
         <?php else : ?> 
             <li><a class="button button-primary" href="<?= $requestUrl ?>/compte">creer un compte</a></li>
-            <li><a class="button button-primary" href="<?= $requestUrl ?>/connexion">connexion</a></li>
+            <li class="layout-right"><a class="button button-primary" href="<?= $requestUrl ?>/connexion">connexion</a></li>
         <?php endif ?>
     </ul>
 </nav>

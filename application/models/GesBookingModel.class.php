@@ -15,9 +15,9 @@ class GesBookingModel {
 
 	var_dump($booking); exit;
 
-	$booking['booking_date'] = '2018-06-29';
-	$booking['booking_time'] = '20:00:00';
-
+	$booking['booking_date'] = 
+					$booking['resaA'] . '-' . $booking['resaM'] . '-' $booking['resaJ'];
+	$booking['booking_time'] = $booking['resaH'] . ':00:00';
 
 
 	$sql = "INSERT 

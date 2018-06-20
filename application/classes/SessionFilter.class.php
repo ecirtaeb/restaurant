@@ -5,6 +5,7 @@ class SessionFilter implements InterceptingFilter {
 
 		$session = new Session();
 		$session->start();
+		echo("staaaaaaaart !!!");
 
 	}
 

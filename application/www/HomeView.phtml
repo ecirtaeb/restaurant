@@ -10,8 +10,8 @@
         <!-- Code HTML à écrire -->
 		<?php foreach ($products as $product) : ?>
 			<tr>
-				<td class="link-list"><img src="<?= $wwwUrl ?>/images/meals/<?=$product['url']?>" alt="<?= $product['url'] ?>"></td>
-				<td><em><?= $product['name'] ?></em></td>
+				<td class="link-list"><img src="<?= $wwwUrl ?>/images/meals/<?=$product['photo']?>" alt="<?= $product['photo'] ?>"></td>
+				<td><h4><?= $product['name'] ?></h4></td>
 				<td><p><?= $product['description'] ?></p></td>
 				<td><p><?= Tools::formatPrice($product['priceHT']) ?></p></td>
 			</tr>      	

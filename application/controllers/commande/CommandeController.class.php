@@ -17,13 +17,18 @@ class CommandeController
 		$session = new Session();
 		$infoUser = $session->getSession();
 
-    		$order = new GesOrderModel();
+    	$order = new GesOrderModel();
 		$orderLines = $order->getOrderByUserId($infoUser['id']);
+        $userOrder = [];
+        foreach ( $orderLines as $line ) {
+            $product = $productModel->getProductById($line['product_id']);
+            $userOrder[] = array_merge ($line, $product);
+        }
 		
 	// liste des produits déjà en commande pour ce compte
 	
 	// on renvoie les 2 listes
-        return ['products' => $productList, 'orderLines' => $orderLines];
+        return ['products' => $productList, 'orderLines' => $userOrder];
 
     }
 
@@ -35,10 +40,7 @@ class CommandeController
     	 * L'argument $http est un objet permettant de faire des redirections etc.
     	 * L'argument $formFields contient l'équivalent de $_POST en PHP natif.
     	 */
-        var_dump($formFields);
-        $user = new Guser();
-		var_dump($user);
-        $user->addUser($formFields);
+
 
  //       $http->redirectTo('login');
 

@@ -3,19 +3,20 @@
 
 <!-- Liste des aliments -->
 <h3><i></i>Passer une commande</h3>
-<form method="post" action="<?= $requestUrl ?>/commande">
+<form method="post" class="generic-form" action="<?= $requestUrl ?>/commande">
 	<fieldset>
 		<legend>Ajouter un article</legend>
 		<ul>
 			<li>
 				<label for="Article">Article:</label>
-				<select name="product_id">
-				<?php foreach ($products as $product) : ?>
-					<option values="<?= $product['id'] ?>"><?= $product['name'] ?></option>
-				<?php endforeach; ?>	
+				<select id="choiceProduct" name="product_id">
+					<?php foreach ($products as $product) : ?>
+						<option value="<?= $product['id'] ?>"><?= $product['name'] ?></option>
+					<?php endforeach; ?>
+				</select>
 			</li>
-			<li class="meal-details">
-
+			<li id="meal-details" class="meal-details no-left-label">
+			<!-- javascript fiche produit -->
 			</li>
 			<li>
 				<label for="quantity">Quantité:</label>
@@ -26,29 +27,13 @@
 			</li>
 		</ul>
 	</fieldset>
-</form>
-<form>
 	<fieldset>
 		<legend>Récapitulatif de la commande</legend>
-		<?php if ( count($orderLines) > 0 ) : ?>
-			<thead>
-				<th>Quantité</th>
-				<th>Produit</th>
-				<th>Prix unitaire</th>
-				<th colspan="2">Prix total</th>
-			</thead>
-			<tbody>
-				<?php foreach ($orderLines as $line) : ?>
-						<td><?= $line['quantity'] ?>"></td>
-						<td><?= $line['product_name'] ?>"></td>
-						<td><?= $line['total_price'] ?>"></td>
-						<td><a heref="#">Poubelle</a></td>
-				<?php endforeach; ?>	
-			</tbody>
-		<?php else: ?>
-			<p class="basket-empty">Votre panier est vide pour le quart d'heure</p>
-		<?php endif ?>
+		<section id="recapCde">
+		<!-- javascript panier -->
+		</section>
 	</fieldset>
 	<button class="button button-primary" name="button" value="validation">Validation de la commande</button>
 	<button class="button button-cancel" name="button" value="abandon">Abandonner</button>
 </form>
+<script src="<?= $wwwUrl ?>/js/commande.js"></script>

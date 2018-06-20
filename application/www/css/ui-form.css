@@ -9,8 +9,8 @@
     padding: 0.5em 1em;
 
     /* presentation */
-    background-color: rgba(255, 102, 51, 0.5);
-    border: 2px solid #FF3300;
+    background-color: rgba(214, 90, 156, 0.5);
+    border: 2px solid rgba(214, 90, 156, 1);
     border-radius: 6px;
     color: white;
 }
@@ -20,7 +20,7 @@
     margin-top: 0;
 
     /* presentation */
-    color: #FF3300;
+    color: rgba(214, 90, 156, 0.5);
 }
 .generic-form .error-message h3 em
 {
@@ -54,7 +54,7 @@
 .generic-form select:focus,
 .generic-form textarea:focus
 {
-    background-color: #D0FFFF;
+    background-color: rgba(67,45,127,0.1);
 }
 .generic-form > ul:last-child
 {

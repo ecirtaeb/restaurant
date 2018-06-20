@@ -1,6 +1,9 @@
 <?php
-
+//          B O O T
+//      ------------------
+//
 // Save the project root directory as a global constant.
+// __ DIR__ est une constante PHP qui contient le chemin du dossier qui contient index.php
 define('ROOT_PATH', __DIR__);
 
 /*
@@ -26,6 +29,6 @@ require_once 'library/MicroKernel.class.php';
 require_once 'library/Http.class.php';
 require_once 'library/InterceptingFilter.interface.php';
 
-
+// initialisation code principal (noyau)
 $microKernel = new MicroKernel();
 $microKernel->bootstrap()->run(new FrontController());

@@ -12,13 +12,13 @@
     margin: 0.25em 0;
 
     /* presentation */
-    color: #339966;
+    color: rgba(67,45,127,1);
     font-family: 'Oleo Script Swash Caps', cursive;
     font-size: 2em;
 }
 .generic-table .colorful
 {
-    color: #339966;
+    color: rgba(67,45,127,1);
 }
 .generic-table .number
 {
@@ -55,6 +55,6 @@
 }
 .generic-table tr:not(.small-notice):hover td
 {
-    background-color: #339966;
+    background-color: rgba(67,45,127,1);
     color: white;
 }

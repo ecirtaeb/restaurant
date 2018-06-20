@@ -11,7 +11,7 @@ class GesOrderModel {
 
 		if ( isset($order['button'] ) ) { array_pop($order); }
 		$sql = "INSERT 
-						INTO order 
+						INTO  `order`
 								(user_id, status)
 						VALUES (:user_id, :status)";
 		var_dump($order);		
@@ -34,14 +34,13 @@ class GesOrderModel {
  
 		if ( isset($order['button'] ) ) { array_pop($order); }
 		
-		$sql = "SELECT orders.id, orderline.priceHT
-					FROM orders
-					JOIN orderline ON orders.id = orderline.order_id
-					JOIN product ON orderline.product_id = product.id
-					WHERE orders.user_id = " . $id;
+		$sql = "SELECT c.id, l.priceHT, l.quantity, l.tax, l.product_id
+					FROM `order` c
+					JOIN orderline l ON c.id = l.order_id
+					WHERE c.user_id = " . $id;
+
 
 	    return $orders = $this->db->query($sql);
-
 	
   	}
 

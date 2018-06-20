@@ -4,7 +4,7 @@
 
 <!-- Réservation d'une table-->
 <h3><i></i>Réservation d'une table</h3>
-<form method="post" action="<?= $requestUrl ?>/booking">
+<form method="post" class="generic-form" action="<?= $requestUrl ?>/booking">
 	<fieldset>
 		<legend>Informations</legend>
 		<ul>
@@ -12,13 +12,13 @@
 				<label for="dateResa">Date de réservation :</label>
 				<select name="resaJ" >
 					<option></option>
-					<?php for ($i = 1 ; $i<32 ; $i++) : ?>
+					<?php for ($i = 100 ; $i<132 ; $i++) : ?>
 						<option values="<?= $i ?>"><?= $i ?></option>
 					<?php endfor ?>
 				</select>
 				<select name="resaM">
 					<option></option>
-					<?php for ($i = 1 ; $i<13 ; $i++) : ?>
+					<?php for ($i = 100 ; $i<113 ; $i++) : ?>
 						<option values="<?= $i ?>"><?= $i ?></option>
 					<?php endfor ?>
 				</select>

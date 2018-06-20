@@ -1,0 +1,39 @@
+<!-- Message de notification -->
+
+
+<h3><i></i>Payer la commande</h3>
+<?php 
+			$infoUser = Session::getSession();
+?>
+
+<ul id="infoClient" class="invoice">
+	<li><?=$infoUser['firstname']?> <?=$infoUser['lastname']?></li>
+	<li><?=$infoUser['address']?> </li>
+	<li><?=$infoUser['zipcode']?></li>
+	<li class="city"><?=$infoUser['city']?></li>
+</ul>
+<h2>Récapitulatif de la commande</h2>
+<table border=0>
+	<thead>
+		<th>Produit</th>
+		<th>Quantité</th>
+		<th>Prix unitaire</th>
+		<th>Prix total</th>
+	</thead>
+	<tbody>
+		<?php foreach ($orderLines as $line) : ?>
+			<tr>
+				<td><?= $line['quantity'] ?></td>
+				<td><?= $line['name'] ?></td>
+				<td><?= $line['priceHT'] ?></td> 
+				<td><?= Tools::formatPrice($product['priceHT'] * $line['quantity']) ?></td> 
+			</tr>
+		<?php endforeach; ?>	
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>
+<form>
+	<button class="button button-primary" name="button" value="validation">Payer</button>
+	<button class="button button-cancel" name="button" value="abandon">Abandonner</button>
+</form>

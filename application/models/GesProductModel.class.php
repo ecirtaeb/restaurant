@@ -10,4 +10,13 @@ class GesProductModel {
 
 		return $products;
 	}
+
+	public function getProductById($id) {
+
+		$db = new Database();
+
+		$sql = "SELECT * FROM product WHERE id = " . $id;
+		return $db->queryOne($sql);
+
+	}
 }
